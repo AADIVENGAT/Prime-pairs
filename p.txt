@@ -1,0 +1,37 @@
+//Prime pairs
+
+S/I : 4 30
+S/O : 6
+
+explanation:(5,11)(7,13)(11,17)(13,19)(17,23)(23,29).We have 6 prime pairs.(difference)
+
+#include<bits/stdc++.h>
+using namespace std;
+void count_prime(int l,int r)
+{
+int count = 0;
+bool prime(r+l);
+memset(prime,true,sizeof(prime));
+for(int p=2;p*p<=r;p++)
+{
+if(prime[p]==true) 
+{
+for(int i=p*2;i<=r;i+=p)
+  prime[i] = false;
+}
+}
+for(int i=l;i<=r-6;i++)
+  if(prime[i] & prime[i+6])
+     count++;
+  if(count>0)
+     cout<<count;
+else
+   cout<<"No prime Pairs";
+}
+int main()
+{
+int n,m;
+cin>>n>>m;
+cout_prime(n,m);
+return 0;
+}
